@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">DevHub</string>
+    <string name="getting_started_name">Connecting Developers across globe</string>
+    <string name="getting_started_btn">Lets Connect</string>
+    <string name="email_et_hint">Email ID</string>
+    <string name="password_et_hint">Password</string>
+    <string name="login_string">Login</string>
+    <string name="new_account_tag_line">New to DevHub?</string>
+    <string name="move_to_register_btn">Register</string>
+    <string name="user_name">User Name</string>
+    <string name="enter_dob">DOB</string>
+    <string name="re_enter_password">Confirm Password</string>
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
+    <string name="radio_other">Do not prefer to say</string>
+    <string name="please_wait">Please Wait</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="190dp" android:layout_height="80dp"
+    android:background="@drawable/wait_dialog_bg"
+    android:layout_gravity="center">
+    <ProgressBar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/pleaseWait_progressBar"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"/>
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/please_wait"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/pleaseWait_progressBar"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        />
+
+
+</RelativeLayout>

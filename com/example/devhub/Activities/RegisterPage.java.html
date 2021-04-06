@@ -1,0 +1,319 @@
+<html>
+<head>
+<title>RegisterPage.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+.s3 { color: #008000; font-weight: bold;}
+.s4 { color: #808080; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+RegisterPage.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.example.devhub.Activities;
+
+<span class="s0">import </span>androidx.annotation.NonNull;
+<span class="s0">import </span>androidx.annotation.Nullable;
+<span class="s0">import </span>androidx.appcompat.app.AppCompatActivity;
+
+<span class="s0">import </span>android.app.DatePickerDialog;
+<span class="s0">import </span>android.app.Dialog;
+<span class="s0">import </span>android.content.ContentResolver;
+<span class="s0">import </span>android.content.Intent;
+<span class="s0">import </span>android.graphics.Color;
+<span class="s0">import </span>android.graphics.drawable.ColorDrawable;
+<span class="s0">import </span>android.net.Uri;
+<span class="s0">import </span>android.os.Bundle;
+<span class="s0">import </span>android.provider.MediaStore;
+<span class="s0">import </span>android.view.View;
+<span class="s0">import </span>android.webkit.MimeTypeMap;
+<span class="s0">import </span>android.widget.Button;
+<span class="s0">import </span>android.widget.DatePicker;
+<span class="s0">import </span>android.widget.EditText;
+<span class="s0">import </span>android.widget.RadioButton;
+<span class="s0">import </span>android.widget.RadioGroup;
+<span class="s0">import </span>android.widget.TextView;
+<span class="s0">import </span>android.widget.Toast;
+
+<span class="s0">import </span>com.example.devhub.R;
+<span class="s0">import </span>com.google.android.gms.tasks.Continuation;
+<span class="s0">import </span>com.google.android.gms.tasks.OnCompleteListener;
+<span class="s0">import </span>com.google.android.gms.tasks.OnFailureListener;
+<span class="s0">import </span>com.google.android.gms.tasks.OnSuccessListener;
+<span class="s0">import </span>com.google.android.gms.tasks.Task;
+<span class="s0">import </span>com.google.firebase.auth.AuthResult;
+<span class="s0">import </span>com.google.firebase.auth.FirebaseAuth;
+<span class="s0">import </span>com.google.firebase.firestore.FirebaseFirestore;
+<span class="s0">import </span>com.google.firebase.storage.FirebaseStorage;
+<span class="s0">import </span>com.google.firebase.storage.StorageReference;
+<span class="s0">import </span>com.google.firebase.storage.UploadTask;
+
+<span class="s0">import </span>java.util.Calendar;
+<span class="s0">import </span>java.util.HashMap;
+<span class="s0">import </span>java.util.Map;
+
+<span class="s0">import </span>de.hdodenhof.circleimageview.CircleImageView;
+
+<span class="s0">public class </span>RegisterPage <span class="s0">extends </span>AppCompatActivity {
+    <span class="s0">private </span>CircleImageView profileIV;
+    <span class="s0">private </span>EditText userNameET, userEmailET, userPasswordET, userConfirmPasswordET;
+    <span class="s0">private </span>Button registerBtn;
+    <span class="s0">private </span>RadioGroup objectRadioGroup;
+    <span class="s0">private </span>TextView dateTV;
+    <span class="s0">private </span>Uri profileImageURL;
+    <span class="s0">private static int </span>REQUEST_CODE=<span class="s2">1</span>;
+    <span class="s0">private </span>DatePickerDialog.OnDateSetListener objectOnDateSetListener;
+    <span class="s0">private </span>FirebaseFirestore objectFirebaseFirestore;
+    <span class="s0">private </span>FirebaseAuth objectFirebaseAuth;
+    <span class="s0">private </span>StorageReference objectStorageReference;
+    <span class="s0">private </span>String finalPassword;
+    <span class="s0">private int </span>radioID;
+    <span class="s0">private </span>RadioButton objectRadioButton;
+    <span class="s0">private </span>Dialog objectDialog;
+
+
+
+
+    @Override
+    <span class="s0">protected void </span>onCreate(Bundle savedInstanceState) {
+        <span class="s0">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register_page);
+        AttachJavaToXMLObjects();
+        objectDialog=<span class="s0">new </span>Dialog(<span class="s0">this</span>);
+        objectDialog.setContentView(R.layout.please_wait_layout);
+        objectFirebaseFirestore=FirebaseFirestore.getInstance();
+        objectFirebaseAuth=FirebaseAuth.getInstance();
+        objectStorageReference= FirebaseStorage.getInstance().getReference(<span class="s3">&quot;ImageFolder&quot;</span>);
+        registerBtn.setOnClickListener(<span class="s0">new </span>View.OnClickListener() {
+            @Override
+            <span class="s0">public void </span>onClick(View v) {
+                createUserAccount();
+            }
+        });
+    }
+    <span class="s0">private void </span>AttachJavaToXMLObjects(){
+        <span class="s0">try </span>{
+            profileIV=findViewById(R.id.RegisterPage_userProfileIV);
+            userNameET=findViewById(R.id.RegisterPage_userNameET);
+            userEmailET=findViewById(R.id.RegisterPage_userEmailET);
+            userPasswordET=findViewById(R.id.RegisterPage_userPasswordET);
+            userConfirmPasswordET=findViewById(R.id.RegisterPage_userConfirmPasswordET);
+            dateTV=findViewById(R.id.RegisterPage_userDOBTV);
+            registerBtn=findViewById(R.id.RegisterPage_RegisterBtn);
+            objectRadioGroup=findViewById(R.id.RegisterPage_RadioGroup);
+            profileIV.setOnClickListener(<span class="s0">new </span>View.OnClickListener() {
+                @Override
+                <span class="s0">public void </span>onClick(View v) {
+                    chooseImageFromMobileGallery();
+                }
+            });
+
+            dateTV.setOnClickListener(<span class="s0">new </span>View.OnClickListener(){
+                <span class="s0">public void </span>onClick(View view){
+                    chooseDOB();
+                }
+
+            });
+        }
+        <span class="s0">catch </span>(Exception e){
+            Toast.makeText(<span class="s0">this</span>,<span class="s3">&quot;RegisterPage&quot;</span>+e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    <span class="s0">private  void </span>uploadUserDatatoFirebase(){
+        <span class="s0">try </span>{
+            <span class="s0">if</span>(profileImageURL!=<span class="s0">null</span>)
+            {
+                String imagename=userNameET.getText().toString()+<span class="s3">&quot;.&quot;</span>+getExtension(profileImageURL);
+                <span class="s0">final </span>StorageReference imageRef=objectStorageReference.child(imagename);
+                <span class="s4">//Toast.makeText(this, &quot;Uploading User Profile Pic... &quot;, Toast.LENGTH_SHORT).show();</span>
+                UploadTask objectUploadTask=imageRef.putFile(profileImageURL);
+                objectUploadTask.continueWithTask(<span class="s0">new </span>Continuation&lt;UploadTask.TaskSnapshot, Task&lt;Uri&gt;&gt;() {
+                    @Override
+                    <span class="s0">public </span>Task&lt;Uri&gt; then(@NonNull Task&lt;UploadTask.TaskSnapshot&gt; task) <span class="s0">throws </span>Exception {
+                        <span class="s0">if</span>(!task.isSuccessful()){
+                            objectDialog.dismiss();
+                            Toast.makeText(RegisterPage.<span class="s0">this</span>, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                            <span class="s0">throw </span>task.getException();
+                        }
+                        <span class="s0">return </span>imageRef.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(<span class="s0">new </span>OnCompleteListener&lt;Uri&gt;() {
+                    @Override
+                    <span class="s0">public void </span>onComplete(@NonNull Task&lt;Uri&gt; task) {
+                        <span class="s0">if</span>(task.isSuccessful()){
+                            Toast.makeText(RegisterPage.<span class="s0">this</span>, <span class="s3">&quot;Uploading User Information...&quot;</span>, Toast.LENGTH_SHORT).show();
+                            Map&lt;String,Object&gt; objectMap=<span class="s0">new </span>HashMap&lt;&gt;();
+                            objectMap.put(<span class="s3">&quot;profileimageurl&quot;</span>,task.getResult().toString());
+                            objectMap.put(<span class="s3">&quot;username&quot;</span>,userNameET.getText().toString());
+                            objectMap.put(<span class="s3">&quot;useremail&quot;</span>,userEmailET.getText().toString());
+                            objectMap.put(<span class="s3">&quot;dob&quot;</span>,dateTV.getText().toString());
+                            objectMap.put(<span class="s3">&quot;userpassword&quot;</span>,finalPassword);
+                            radioID=objectRadioGroup.getCheckedRadioButtonId();
+                            objectRadioButton=findViewById(radioID);
+                            objectMap.put(<span class="s3">&quot;noofemotions&quot;</span>,<span class="s2">0</span>);
+                            objectMap.put(<span class="s3">&quot;gender&quot;</span>,objectRadioButton.getText().toString());
+                            objectMap.put(<span class="s3">&quot;noofimagestatus&quot;</span>,<span class="s2">0</span>);
+                            objectMap.put(<span class="s3">&quot;nooftextstatus&quot;</span>,<span class="s2">0</span>);
+                            objectMap.put(<span class="s3">&quot;usercity&quot;</span>,<span class="s3">&quot;NA&quot;</span>);
+                            objectMap.put(<span class="s3">&quot;usercountry&quot;</span>,<span class="s3">&quot;NA&quot;</span>);
+                            objectMap.put(<span class="s3">&quot;userbio&quot;</span>,<span class="s3">&quot;NA&quot;</span>);
+                            objectFirebaseFirestore.collection(<span class="s3">&quot;UserProfileData&quot;</span>)
+                                    .document(userEmailET.getText().toString())
+                                    .set(objectMap)
+                                    .addOnSuccessListener(<span class="s0">new </span>OnSuccessListener&lt;Void&gt;() {
+                                        @Override
+                                        <span class="s0">public void </span>onSuccess(Void aVoid) {
+                                            objectDialog.dismiss();
+                                            Toast.makeText(RegisterPage.<span class="s0">this</span>, <span class="s3">&quot;User is created&quot;</span>, Toast.LENGTH_SHORT).show();
+                                            <span class="s0">if</span>(objectFirebaseAuth.getCurrentUser()!=<span class="s0">null</span>){
+                                                objectFirebaseAuth.signOut();
+                                            }
+                                            startActivity(<span class="s0">new </span>Intent(RegisterPage.<span class="s0">this</span>,LoginPage.<span class="s0">class</span>));
+                                        }
+                                    }).addOnFailureListener(<span class="s0">new </span>OnFailureListener() {
+                                @Override
+                                <span class="s0">public void </span>onFailure(@NonNull Exception e) {
+                                    objectDialog.dismiss();
+                                    Toast.makeText(RegisterPage.<span class="s0">this</span>, <span class="s3">&quot;Fails to create and update user&quot;</span>, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+
+
+                        }
+                        <span class="s0">else if </span>(!task.isSuccessful()){
+                            Toast.makeText(RegisterPage.<span class="s0">this</span>,task.getException().toString(),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+
+        }
+        <span class="s0">catch </span>(Exception e){
+            Toast.makeText(<span class="s0">this</span>,<span class="s3">&quot;RegisterPage&quot;</span>+e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    <span class="s0">private void </span>createUserAccount(){
+        <span class="s0">try</span>{
+            <span class="s0">if</span>(objectFirebaseAuth.getCurrentUser()!=<span class="s0">null</span>){
+                objectFirebaseAuth.signOut();
+            }
+            <span class="s0">if</span>(objectFirebaseAuth.getCurrentUser()==<span class="s0">null </span>&amp;&amp; !userNameET.getText().toString().isEmpty() &amp;&amp; !userEmailET.getText().toString().isEmpty() &amp;&amp; !userPasswordET.getText().toString().isEmpty() &amp;&amp; !userConfirmPasswordET.getText().toString().isEmpty()){
+                <span class="s0">if</span>(userPasswordET.getText().toString().equals(userConfirmPasswordET.getText().toString())){
+                    objectDialog.show();
+                    finalPassword=userPasswordET.getText().toString();
+                    objectFirebaseAuth.createUserWithEmailAndPassword(userEmailET.getText().toString(),finalPassword).addOnSuccessListener(<span class="s0">new </span>OnSuccessListener&lt;AuthResult&gt;() {
+                        
+                        @Override
+                        <span class="s0">public void </span>onSuccess(AuthResult authResult) {
+                            uploadUserDatatoFirebase();
+
+                        }
+                    }).addOnFailureListener(<span class="s0">new </span>OnFailureListener() {
+                        @Override
+                        <span class="s0">public void </span>onFailure(@NonNull Exception e) {
+                            objectDialog.dismiss();
+                            Toast.makeText(RegisterPage.<span class="s0">this</span>,<span class="s3">&quot;Fails to create user&quot;</span>+e.getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                <span class="s0">else</span>{
+                    Toast.makeText(<span class="s0">this</span>, <span class="s3">&quot;Password did not match&quot;</span>, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+            <span class="s0">else </span>{
+                objectDialog.dismiss();
+                Toast.makeText(<span class="s0">this</span>, <span class="s3">&quot;Please Check user data fields or profile picture&quot;</span>, Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+        <span class="s0">catch </span>(Exception e){
+            Toast.makeText(<span class="s0">this</span>,<span class="s3">&quot;RegisterPage&quot;</span>+e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+    }
+    <span class="s0">private </span>String getExtension(Uri uri){
+        <span class="s0">try</span>{
+            ContentResolver objectContentResolver=getContentResolver();
+            MimeTypeMap objectMimeTypeMap=MimeTypeMap.getSingleton();
+
+            <span class="s0">return </span>objectMimeTypeMap.getExtensionFromMimeType(objectContentResolver.getType(uri));
+
+
+        }
+        <span class="s0">catch </span>(Exception e){
+            Toast.makeText(<span class="s0">this</span>,<span class="s3">&quot;RegisterPage&quot;</span>+e.getMessage(),Toast.LENGTH_SHORT).show();
+            <span class="s0">return null</span>;
+        }
+
+    }
+    <span class="s0">private void </span>chooseDOB(){
+        <span class="s0">try</span>{
+            Calendar objectCalender=Calendar.getInstance();
+            <span class="s0">int </span>year=objectCalender.get(Calendar.YEAR);
+            <span class="s0">int </span>month=objectCalender.get(Calendar.MONTH);
+            <span class="s0">int </span>day=objectCalender.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog objectDatePickerDialog= <span class="s0">new </span>DatePickerDialog(<span class="s0">this</span>, android.R.style.Theme_Holo_Light_Dialog_MinWidth,objectOnDateSetListener,year,month,day);
+            objectDatePickerDialog.getWindow().setBackgroundDrawable(<span class="s0">new </span>ColorDrawable(Color.TRANSPARENT));
+            objectDatePickerDialog.show();
+            objectOnDateSetListener=<span class="s0">new </span>DatePickerDialog.OnDateSetListener() {
+                @Override
+                <span class="s0">public void </span>onDateSet(DatePicker view, <span class="s0">int </span>year, <span class="s0">int </span>month, <span class="s0">int </span>dayOfMonth) {
+                    month++;
+                    dateTV.setText(dayOfMonth+<span class="s3">&quot;-&quot;</span>+month+<span class="s3">&quot;-&quot;</span>+year);
+                }
+            };
+        }
+        <span class="s0">catch </span>(Exception e){
+            Toast.makeText(<span class="s0">this</span>,<span class="s3">&quot;RegisterPage&quot;</span>+e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+    }
+    <span class="s0">private void </span>chooseImageFromMobileGallery(){
+        <span class="s0">try</span>{
+            openMobileGallery();
+        }
+        <span class="s0">catch</span>(Exception e){
+            Toast.makeText(<span class="s0">this</span>,<span class="s3">&quot;RegisterPage&quot;</span>+e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+    }
+    <span class="s0">private void </span>openMobileGallery(){
+        <span class="s0">try</span>{
+            Intent galleryIntent= <span class="s0">new </span>Intent(Intent.ACTION_GET_CONTENT);
+            galleryIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,<span class="s3">&quot;image/*&quot;</span>);
+            startActivityForResult(galleryIntent, REQUEST_CODE);
+
+
+        }
+        <span class="s0">catch </span>(Exception e){
+            Toast.makeText(<span class="s0">this</span>,<span class="s3">&quot;RegisterPage&quot;</span>+e.getMessage(),Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+    @Override
+    <span class="s0">protected void </span>onActivityResult(<span class="s0">int </span>requestCode, <span class="s0">int </span>resultCode, @Nullable Intent data) {
+        <span class="s0">super</span>.onActivityResult(requestCode, resultCode, data);
+        <span class="s0">if </span>(data.getData()!=<span class="s0">null </span>&amp;&amp; data!=<span class="s0">null</span>){
+            profileImageURL=data.getData();
+            profileIV.setImageURI(profileImageURL);
+            
+        }
+        <span class="s0">else</span>
+        {
+            Toast.makeText(<span class="s0">this</span>, <span class="s3">&quot;No Project is selected&quot;</span>, Toast.LENGTH_SHORT).show();
+
+        }
+    }
+}</pre>
+</body>
+</html>
