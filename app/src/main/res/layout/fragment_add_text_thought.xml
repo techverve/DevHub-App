@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/FragaddTextThought"
+    tools:context=".Fragments.addTextThoughtFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/techstatus"
+        android:scaleType="centerCrop"
+        android:id="@+id/FragaddTextThought_background"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:id="@+id/FragaddTextThought_textThoughtET"
+        android:textColor="@color/teal_200"
+        android:background="@color/white"
+        android:textStyle="italic"
+        android:hint="@string/techstatus_hint"
+        android:textColorHint="@color/black"
+        android:gravity="top|left"
+        android:paddingLeft="8dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="8dp"
+        android:maxLength="200"
+        android:layout_alignParentLeft="true"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:text="Publish Status"
+        android:textSize="12sp"
+        android:layout_centerInParent="true"
+        android:background="@color/teal_200"
+        android:padding="10dp"
+        android:id="@+id/FragaddTextThought_publishThoughtsBtn"
+        android:layout_below="@+id/FragaddTextThought_textThoughtET"
+        android:layout_margin="10dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:text="Rewrite Status"
+        android:textSize="12sp"
+        android:layout_centerInParent="true"
+        android:background="@color/teal_200"
+        android:padding="10dp"
+        android:id="@+id/FragaddTextThought_rewriteThoughtsBtn"
+        android:layout_below="@+id/FragaddTextThought_publishThoughtsBtn"
+        android:layout_margin="10dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:text="Go Back Button"
+        android:textSize="11sp"
+        android:layout_centerInParent="true"
+        android:background="@color/teal_200"
+        android:padding="10dp"
+        android:id="@+id/FragaddTextThought_goBackBtn"
+        android:layout_below="@+id/FragaddTextThought_rewriteThoughtsBtn"
+        android:layout_margin="10dp"
+        />
+
+    <ProgressBar
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:id="@+id/FragaddTextThought_ProgressBar"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"
+        />
+</RelativeLayout>

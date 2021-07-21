@@ -14,4 +14,26 @@
     <string name="radio_female">Female</string>
     <string name="radio_other">Do not prefer to say</string>
     <string name="please_wait">Please Wait</string>
+    <string name="tech_thoughts">Tech Thoughts</string>
+    <string name="image_thoughts">Image Thoughts</string>
+    <string name="favourite_thoughts">Favourite</string>
+    <string name="user_name_header">USER NAME</string>
+    <string name="user_email_header">userEmail@email.com</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="techstatus_hint">ENTER THE TECH THOUGHT(MAX 200 CHAR)</string>
+    <string name="imagestatus_hint">ENTER THE IMAGE STATUS(MAX 100 CHAR)</string>
+    <string name="comment_hint">Enter your comment here</string>
+    <string name="no_user_online">No User is Online</string>
+    <string name="comment_added">Comment Added</string>
+    <string name="comment_not_added">Failed to add comment</string>
+    <string name="you_cant_delete_this_status">\"You can\'t delete this status\"</string>
+    <string name="status_deleted">Status Deleted</string>
+    <string name="failed_to_delete_status">Failed to delete status</string>
+    <string name="cant_delete_this_status">You can\'t delete this status</string>
+    <string name="status_added_to_favorites">Status added to favorites</string>
+    <string name="failed_to_add_status_to_favorites">Failed to add status to favorites</string>
+    <string name="status_deleted_successfully">Status Deleted Successfully</string>
+    <string name="fails_to_remove_status">Fails to remove status</string>
 </resources>

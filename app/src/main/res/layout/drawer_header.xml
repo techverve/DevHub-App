@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:padding="20dp"
+    android:background="@color/black" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/profilepic"
+        android:alpha="0.4"
+        android:scaleType="centerCrop"
+        android:id="@+id/header_profilePicBack"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:id="@+id/header_profilePic"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="15dp"
+        android:src="@drawable/profilepic"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/header_userName"
+        android:textSize="10sp"
+        android:text="@string/user_name_header"
+        android:layout_toEndOf="@+id/header_profilePic"
+        android:textStyle="bold"
+        android:typeface="monospace"
+        android:textColor="@color/white"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/header_userEmail"
+        android:text="@string/user_email_header"
+        android:textSize="10sp"
+        android:layout_below="@+id/header_userName"
+        android:layout_toEndOf="@+id/header_profilePic"
+        android:textStyle="bold"
+        android:typeface="monospace"
+        android:textColor="@color/white"
+        android:layout_marginStart="13dp"
+        />
+    <ProgressBar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/header_progressBar"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"/>
+
+
+</RelativeLayout>

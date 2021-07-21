@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/group_item_1"
+        android:title="ABOUT YOU"
+        >
+        <menu>
+            <item
+                android:id="@+id/item_profile"
+                android:title="PROFILE"
+                android:icon="@drawable/ic_profile"
+                android:checked="true"/>
+            <item
+                android:id="@+id/item_notifications"
+                android:title="NOTIFICATIONS"
+                app:actionViewClass="android.widget.TextView"
+                android:icon="@drawable/ic_notifications"
+                android:checked="true"/>
+
+            <item
+                android:id="@+id/item_settings"
+                android:title="SETTINGS"
+                android:icon="@drawable/ic_settings"
+                android:checked="true"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/group_item_2"
+        android:title="ABOUT YOUR FRIENDS"
+        >
+        <menu>
+            <item
+                android:id="@+id/item_favourite"
+                android:title="FAVOURITE"
+                android:icon="@drawable/ic_fav_thought"
+                android:checked="true"/>
+            <item
+                android:id="@+id/item_techstatus"
+                android:title="TIMELINE"
+                android:icon="@drawable/ic_tech_thought"
+                android:checked="true"/>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/item_signout"
+        android:title="SIGN OUT"
+        android:icon="@drawable/ic_signout"
+        android:checked="true"/>
+
+</menu>

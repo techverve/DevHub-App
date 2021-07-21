@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginPage extends AppCompatActivity {
 
-   private RelativeLayout objectRelativeLayout;
+    private RelativeLayout objectRelativeLayout;
     private ImageView logoLoginLogoIV;
     private AnimationDrawable objectAnimationDrawable;
     private Animation objectAnimation;
@@ -41,90 +41,88 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
         attachJavaObjectToXML();
-        objectFirebaseAuth=FirebaseAuth.getInstance();
-        objectDialog=new Dialog(this);
+        objectFirebaseAuth = FirebaseAuth.getInstance();
+        objectDialog = new Dialog(this);
         objectDialog.setContentView(R.layout.please_wait_layout);
 
 
     }
-    private void attachJavaObjectToXML(){
-        try{
-        objectRelativeLayout=findViewById(R.id.loginPage_RL);
-        objectAnimationDrawable= (AnimationDrawable) objectRelativeLayout.getBackground();
-        objectAnimationDrawable.setEnterFadeDuration(4500);
-        objectAnimationDrawable.setExitFadeDuration(4500);
-        objectAnimationDrawable.start();
-        logoLoginLogoIV=findViewById(R.id.loginPage_logoIV);
-        loginPageEmailET=findViewById(R.id.loginPage_EmailET);
-        loginPagePasswordET=findViewById(R.id.loginPage_passwordET);
-        loginPageTagLineTV=findViewById(R.id.loginPage_CreateAccount);
-        loginPageLoginBtn=findViewById(R.id.loginPage_loginBtn);
-        loginPageGoToRegisterBtn=findViewById(R.id.loginPage_moveToRegisterPage);
-        objectAnimation= AnimationUtils.loadAnimation(this,R.anim.anim_login_enry);
-        logoLoginLogoIV.startAnimation(objectAnimation);
-        loginPageEmailET.startAnimation(objectAnimation);
-        loginPagePasswordET.startAnimation(objectAnimation);
-        loginPageLoginBtn.startAnimation(objectAnimation);
-        loginPageGoToRegisterBtn.startAnimation(objectAnimation);
-        loginPageTagLineTV.startAnimation(objectAnimation);
-        loginPageGoToRegisterBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moveToRegisterPage();
-            }
-        });
-        loginPageLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signInUser();
-            }
-        });
-        }
-        catch (Exception e){
-            Toast.makeText(this,"LoginPage"+e.getMessage(),Toast.LENGTH_SHORT).show();
+
+    private void attachJavaObjectToXML() {
+        try {
+            objectRelativeLayout = findViewById(R.id.loginPage_RL);
+            objectAnimationDrawable = (AnimationDrawable) objectRelativeLayout.getBackground();
+            objectAnimationDrawable.setEnterFadeDuration(4500);
+            objectAnimationDrawable.setExitFadeDuration(4500);
+            objectAnimationDrawable.start();
+            logoLoginLogoIV = findViewById(R.id.loginPage_logoIV);
+            loginPageEmailET = findViewById(R.id.loginPage_EmailET);
+            loginPagePasswordET = findViewById(R.id.loginPage_passwordET);
+            loginPageTagLineTV = findViewById(R.id.loginPage_CreateAccount);
+            loginPageLoginBtn = findViewById(R.id.loginPage_loginBtn);
+            loginPageGoToRegisterBtn = findViewById(R.id.loginPage_moveToRegisterPage);
+            objectAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_login_enry);
+            logoLoginLogoIV.startAnimation(objectAnimation);
+            loginPageEmailET.startAnimation(objectAnimation);
+            loginPagePasswordET.startAnimation(objectAnimation);
+            loginPageLoginBtn.startAnimation(objectAnimation);
+            loginPageGoToRegisterBtn.startAnimation(objectAnimation);
+            loginPageTagLineTV.startAnimation(objectAnimation);
+            loginPageGoToRegisterBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    moveToRegisterPage();
+                }
+            });
+            loginPageLoginBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    signInUser();
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(this, "LoginPage" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
-    private void signInUser(){
+
+    private void signInUser() {
         try {
-            if(!loginPageEmailET.getText().toString().isEmpty() && !loginPagePasswordET.getText().toString().isEmpty()){
+            if (!loginPageEmailET.getText().toString().isEmpty() && !loginPagePasswordET.getText().toString().isEmpty()) {
                 objectDialog.show();
-                if(objectFirebaseAuth.getCurrentUser()==null){
-                    objectFirebaseAuth.signInWithEmailAndPassword(loginPageEmailET.getText().toString(),loginPagePasswordET.getText().toString())
+                if (objectFirebaseAuth.getCurrentUser() == null) {
+                    objectFirebaseAuth.signInWithEmailAndPassword(loginPageEmailET.getText().toString(), loginPagePasswordET.getText().toString())
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                     objectDialog.dismiss();
-                                    Toast.makeText(LoginPage.this, "Welcome"+loginPageEmailET.getText().toString(), Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(LoginPage.this,MainContentPage.class));
+                                    Toast.makeText(LoginPage.this, "Welcome " + loginPageEmailET.getText().toString(), Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginPage.this, MainContentPage.class));
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             objectDialog.dismiss();
-                            Toast.makeText(LoginPage.this, "LoginPage:"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginPage.this, "LoginPage:" + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-                }
-                else{
+                } else {
                     objectDialog.dismiss();
                     objectFirebaseAuth.signOut();
                     Toast.makeText(this, "Previously signed in user logged out, sign in again please", Toast.LENGTH_SHORT).show();
                 }
-            }
-            else {
+            } else {
                 Toast.makeText(this, "Fill both login and password fields", Toast.LENGTH_SHORT).show();
             }
 
-        }catch (Exception e){
-            Toast.makeText(this,"LoginPage"+e.getMessage(),Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "LoginPage" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
-    private void moveToRegisterPage()
-    {
-        try{
-            startActivity(new Intent(this,RegisterPage.class));
-        }
-        catch (Exception e){
+
+    private void moveToRegisterPage() {
+        try {
+            startActivity(new Intent(this, RegisterPage.class));
+        } catch (Exception e) {
         }
     }
 }

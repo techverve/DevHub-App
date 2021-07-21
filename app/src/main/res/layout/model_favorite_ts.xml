@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_margin="1dp"
+    android:id="@+id/model_favorite_ts_RL"
+    android:background="@color/black"
+    >
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/remove_favorite"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:id="@+id/model_favorite_ts_removeStatusIV"
+        />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/profilepic"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:id="@+id/model_favorite_ts_profilePicIV"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="dummy@dummy.com"
+        android:id="@+id/model_favorite_ts_emailTV"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@id/model_favorite_ts_profilePicIV"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:id="@+id/model_favorite_ts_dateTV"
+        android:layout_below="@id/model_favorite_ts_emailTV"
+        android:layout_toRightOf="@id/model_favorite_ts_profilePicIV"
+        android:text="00:00:00 00 April 2021"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:paddingLeft="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:id="@+id/model_favorite_ts_statusTV"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:layout_below="@id/model_favorite_ts_dateTV"
+        android:text="This is dummy status"
+        android:paddingRight="10dp"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.addImageThoughtFragment"
+    android:id="@+id/Frag_AddImageThought_RL">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/Frag_AddImageThought_Background"
+        android:src="@drawable/imagestatus"
+        android:scaleType="centerCrop"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go Back"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:background="@color/white"
+        android:textColor="@color/white"
+        android:id="@+id/Frag_AddImageThought_goBackBtn"
+        android:textSize="10sp"/>
+
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/click_to_image"
+        android:scaleType="centerCrop"
+        android:layout_margin="10dp"
+        android:id="@+id/Frag_AddImageThought_getImageIV"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/Frag_AddImageThought_DescriptionET"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="13sp"
+        android:textColorHint="@color/black"
+        android:hint="@string/imagestatus_hint"
+        android:inputType="textMultiLine"
+        android:paddingLeft="8dp"
+        android:gravity="top"
+        android:maxLength="100"
+        android:textStyle="italic"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Publish Thought"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        android:textColor="@color/white"
+        android:layout_below="@+id/Frag_AddImageThought_DescriptionET"
+        android:id="@+id/Frag_AddImageThought_publishThoughtsBtn"
+        android:textSize="10sp"/>
+
+    <ProgressBar
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:id="@+id/Frag_AddImageThought_ProgressBar"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"
+        />
+
+
+
+</RelativeLayout>

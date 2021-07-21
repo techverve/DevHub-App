@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/model_addImagecomment_profilePicIV"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profilepic">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/model_addImagecomment_userNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_toRightOf="@id/model_addImagecomment_profilePicIV"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="dummy@dummy.com"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/model_addImagecomment_currentDateTimeTV"
+            android:layout_width="wrap_content"
+            android:layout_height="13dp"
+            android:layout_below="@+id/model_addImagecomment_userNameTV"
+            android:paddingLeft="10dp"
+            android:text="00:00:00 00 Jan 2021"
+            android:textColor="@color/colorPrimary"
+            android:textSize="10sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/model_addImagecomment_commentTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/model_addImagecomment_profilePicIV"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:text="Dummy Comment"
+            android:textColor="@color/black"
+            android:textSize="17sp">
+
+        </TextView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

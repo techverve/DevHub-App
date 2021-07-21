@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="@string/tech_thoughts"
+        android:id="@+id/item_techThoughts"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_tech_thought"
+        />
+    <item
+        android:title="@string/image_thoughts"
+        android:id="@+id/item_imageThoughts"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_image_thought"
+        />
+    <item
+        android:title="@string/favourite_thoughts"
+        android:id="@+id/item_favThoughts"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_fav_thought"
+        />
+</menu>

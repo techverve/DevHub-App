@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/model_image_status_RL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp">
+
+    <ImageView
+        android:id="@+id/model_image_status_imageStatusIV"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/backgroundstatus">
+
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/model_image_status_profilePicIV"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profilepic">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/model_image_status_userEmailTV"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/model_image_status_profilePicIV"
+        android:text="dummy@dummy.com"
+        android:textColor="@color/colorPrimary">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/model_image_status_dateOfStatusTV"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@id/model_image_status_userEmailTV"
+        android:layout_toRightOf="@id/model_image_status_profilePicIV"
+        android:paddingLeft="10dp"
+        android:text="00:00:00 Jan 2021"
+        android:textColor="@color/colorPrimary"
+        android:textSize="10sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/model_image_status_imageStatusDesTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/model_image_status_imageStatusIV"
+        android:layout_marginBottom="20dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:text="Hi, this is a dummy text description"
+        android:textColor="@color/colorPrimary"
+        android:textSize="17sp">
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/model_image_status_favouriteImageStatusIV"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:background="#FFFF66"
+        android:src="@drawable/ic_favorite_status">
+
+    </ImageView>
+
+    <LinearLayout
+        android:id="@+id/model_image_status_InnerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/model_image_status_imageStatusIV"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="3dp">
+
+        <ImageView
+            android:id="@+id/model_image_status_heartIV"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_heart">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/model_image_status_heartCountTV"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="bottom|left"
+            android:paddingBottom="5dp"
+            android:text="0"
+            android:textColor="@color/highlightercolor">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/model_image_status_hahaIV"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_haha">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/model_image_status_hahaCountTV"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="bottom|left"
+            android:paddingBottom="5dp"
+            android:text="0"
+            android:textColor="@color/highlightercolor">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/model_image_status_sadIV"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_sad">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/model_image_status_sadCountTV"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="bottom|left"
+            android:paddingBottom="5dp"
+            android:text="0"
+            android:textColor="@color/black">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/model_image_status_commentIV"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_comments">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/model_image_status_commentCountTV"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="bottom|left"
+            android:paddingBottom="5dp"
+            android:text="0"
+            android:textColor="@color/highlightercolor">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/model_image_status_deleteIV"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_deleteicon">
+
+        </ImageView>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="1000dp"
+        android:id="@+id/model_image_status_progressBar"
+        android:layout_centerInParent="true"
+        android:visibility="invisible">
+
+    </ProgressBar>
+
+
+</RelativeLayout>

@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DevHub">
-        <activity android:name=".Activities.MainContentPage"></activity>
+        <activity android:name=".Activities.ProfilePage"></activity>
+        <activity android:name=".Activities.AllNotifications" />
+        <activity android:name=".Activities.ImageCommentPage" />
+        <activity android:name=".Activities.TextCommentPage" />
+        <activity android:name=".Activities.AddThoughtsPage" />
+        <activity android:name=".Activities.MainContentPage" />
         <activity android:name=".Activities.RegisterPage" />
         <activity android:name=".Activities.LoginPage" />
         <activity android:name=".MainActivity">

@@ -10,4 +10,10 @@
     <color name="registerPageBG">#C2970F</color>
     <color name="lightGray">#A3A1A1</color>
     <color name="highlightercolor">#A72929</color>
+    <color name="colorLightGray">#FAF7F7</color>
+    <color name="colorPrimary">#FFC107</color>
+    <color name="colorBackground">#AAFFDE</color>
+    <color name="lighterGrayColor">#E6E2E2</color>
+    <color name="cardBackgroundBG">#FCFCFC</color>
+
 </resources>

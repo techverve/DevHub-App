@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.TextCommentPage">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/techStatus_commentRV"
+        android:layout_margin="5dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/techStatus_commentET"
+        android:layout_below="@+id/techStatus_commentRV"
+        android:maxLength="100"
+        android:hint="@string/comment_hint"
+        android:textColor="@color/black"
+        android:textColorHint="#9400D3"
+        android:textSize="14sp"
+        android:paddingLeft="8dp"
+        android:background="@drawable/et_border"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="8dp"
+        />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_addcomment"
+        android:layout_below="@+id/techStatus_commentET"
+        android:id="@+id/techStatus_commentAddCommentBtn"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        />
+
+
+
+</RelativeLayout>

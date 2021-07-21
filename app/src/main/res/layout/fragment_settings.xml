@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.SettingFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <ImageView
+            android:id="@+id/settingFrag_backgroundIV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha=".8"
+            android:scaleType="centerCrop"
+            android:src="@drawable/setting_bg">
+
+        </ImageView>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/settingFrag_profilePicIV"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profilepic">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <Button
+            android:id="@+id/settingFrag_changeDpBtn"
+            android:layout_width="75dp"
+            android:layout_height="30dp"
+            android:text="Change DP"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/round_btn_bg"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:textColor="@color/white"
+            android:textSize="6sp">
+
+        </Button>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="User Name"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:id="@+id/settingFrag_userNameTV"
+            android:typeface="monospace"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/settingFrag_changeDpBtn"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp">
+
+        </TextView>
+        
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:maxLength="20"
+            android:id="@+id/settingFrag_userNameET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Enter User Name here to change"
+            android:gravity="center|left"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_below="@id/settingFrag_userNameTV"
+            android:background="@drawable/setting_et_bg">
+
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="User Bio"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:id="@+id/settingFrag_userBioTV"
+            android:typeface="monospace"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/settingFrag_userNameET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp">
+
+        </TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:inputType="textMultiLine"
+            android:maxLength="150"
+            android:id="@+id/settingFrag_userBioET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Enter Bio here"
+            android:gravity="center|left"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_below="@id/settingFrag_userBioTV"
+            android:background="@drawable/setting_et_bg">
+
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="User City"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:id="@+id/settingFrag_userCityTV"
+            android:typeface="monospace"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/settingFrag_userBioET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp">
+
+        </TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:maxLength="20"
+            android:id="@+id/settingFrag_userCityET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Enter City here"
+            android:gravity="center|left"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_below="@id/settingFrag_userCityTV"
+            android:background="@drawable/setting_et_bg">
+
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="User Country"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:id="@+id/settingFrag_userCountryTV"
+            android:typeface="monospace"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/settingFrag_userCityET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp">
+
+        </TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:maxLength="20"
+            android:id="@+id/settingFrag_userCountryET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Enter Country here"
+            android:gravity="center|left"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_below="@id/settingFrag_userCountryTV"
+            android:background="@drawable/setting_et_bg">
+
+        </EditText>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:text="Update Bio"
+            android:textSize="8sp"
+            android:background="@drawable/round_btn_bg"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/settingFrag_userCountryET"
+            android:id="@+id/settingFrag_updateInfoBtn"
+            android:layout_marginTop="10dp">
+
+        </Button>
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

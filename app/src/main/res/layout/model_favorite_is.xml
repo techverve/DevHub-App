@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:id="@+id/model_favorite_is_RL"
+    android:background="@color/white"
+    android:layout_margin="2dp"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/model_favorite_is_StatusIV"
+        android:scaleType="centerCrop"
+        android:src="@drawable/backgroundstatus"
+        />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/model_favorite_is_profilePicIV"
+        android:src="@drawable/profilepic"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/model_favorite_is_userEmailTV"
+        android:textColor="@color/colorPrimary"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:textSize="15sp"
+        android:text="dummy@dummy.com"
+        android:layout_toRightOf="@id/model_favorite_is_profilePicIV"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:id="@+id/model_favorite_is_dateOfStatusTV"
+        android:text="00:00:00 00 Apr 2021"
+        android:textSize="10sp"
+        android:textColor="@color/colorPrimary"
+        android:paddingLeft="10dp"
+        android:layout_below="@id/model_favorite_is_userEmailTV"
+        android:layout_toRightOf="@id/model_favorite_is_profilePicIV"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/model_favorite_is_statusDescriptTV"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_alignBottom="@id/model_favorite_is_StatusIV"
+        android:text="Hi, this is a dummy description"
+        android:textColor="@color/colorPrimary"
+        android:textSize="17sp"
+        android:layout_marginBottom="20dp"
+        />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/remove_favorite"
+        android:scaleType="centerCrop"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/model_favorite_is_removeStatusIV"
+        />
+
+</RelativeLayout>

@@ -163,7 +163,7 @@ public class RegisterPage extends AppCompatActivity {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     objectDialog.dismiss();
-                                    Toast.makeText(RegisterPage.this, "Fails to create and update user", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterPage.this, "Failed to create and update user", Toast.LENGTH_SHORT).show();
                                 }
                             });
 
@@ -203,7 +203,7 @@ public class RegisterPage extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             objectDialog.dismiss();
-                            Toast.makeText(RegisterPage.this,"Fails to create user"+e.getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterPage.this,"Failed to create user "+e.getMessage(),Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
